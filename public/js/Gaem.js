@@ -5,6 +5,19 @@ define("Gaem", ['Player'], function (Player) {
 	  this.ctx = this.canvas.getContext('2d');
 
 	  this.player = new Player();
+
+	  this.keys = {};
+
+	  document.addEventListener('keydown', this.keydown.bind(this));
+	  document.addEventListener('keyup', this.keyup.bind(this));
+	};
+
+	Gaem.prototype.keydown = function(event) {
+		this.keys[event.keyCode] = true;
+	};
+
+	Gaem.prototype.keyup = function(event) {
+		this.keys[event.keyCode] = false;
 	};
 
 	Gaem.prototype.draw = function() {
@@ -27,5 +40,4 @@ define("Gaem", ['Player'], function (Player) {
 	};
 
 	return Gaem;
-
 });
