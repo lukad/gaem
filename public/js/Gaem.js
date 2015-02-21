@@ -46,6 +46,7 @@ define("Gaem", ['Graphics', 'Song', 'ScoreCalculator', 'Menu'],
       }
     }
     if(event.keyCode === 27 && this.audioCreated) {
+      this.score = 0;
       this.showMenu = !this.showMenu;
     }
   };
