@@ -11,7 +11,7 @@ define("Graphics", function () {
 
 	Graphics.prototype.draw_game_menu = function() {
 	 	console.log("Graphics:draw_game_menu");
-		ctx.clearRect(0, 0, ctx.);
+		ctx.clearRect(0, 0, ctx.getWidth, ctx.getHeight);
 		ctx.drawImage(start_button, ctx.getWidth / 3, ctx.getHeight / 3);
 	};
 

@@ -7,7 +7,7 @@ define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
 	  this.keys = {};
 	  
 	  this.showMenu = false;
-	  this.graphics = new Graphics(ctx, keys);
+	  this.graphics = new Graphics(this.ctx, this.keys);
 	  this.player = new Player();
 
 
