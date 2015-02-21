@@ -73,10 +73,6 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 		this.ctx.lineTo(512,lineY);
 		this.ctx.stroke();
 	};
-	
-
-	Graphics.prototype.update = function() {
-	};
 
 	Graphics.prototype.onMouseDown = function(event) {
 		var x = event.clientX,
