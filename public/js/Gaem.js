@@ -82,6 +82,8 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player
 
   Gaem.prototype.run = function() {
     this.selectSong();
+    this.song.playSong(1);
+
     window.requestAnimationFrame(this.step.bind(this));
   };
 

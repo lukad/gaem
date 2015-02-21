@@ -9,7 +9,7 @@
 define("Song", function () {
 
   function Song() {
-  	this.song_files = ['public/songs/guitar_solo.mp3']
+  	this.song_files = ['','/songs/guitar_solo.mp3'];
     this.sample_song = [{"start": 1, "duration":100}];
     this.guitar_solo = [
       // baseine
@@ -38,8 +38,6 @@ define("Song", function () {
       {"start": 28216, "duration":100}
     ]
     this.songs = [this.sample_song, this.guitar_solo];
-
-    this.currentTime = 0;
   };
 
   Song.prototype.getTracks = function() {
@@ -55,34 +53,41 @@ define("Song", function () {
   };
 
   Song.prototype.getCurrentTime = function() {
-    this.currentTime++;
-    return this.currentTime;
+   if (document.getElementsByTagName("audio")) {
+   	return document.getElementsByTagName("audio")[0].currentTime * 1000;
+   } 
+   return 0;
   }
 
-  Song.prototype.play_song = function(track_id) {
+  Song.prototype.playSong = function(track_id) {
   	//Create the audio tag
-		var soundFile = document.createElement("audio");
-		soundFile.preload = "auto";
+  	// ony one audio element
+		if (document.getElementsByTagName("audio").length==0) {
+			var soundFile = document.createElement("audio");
+				soundFile.preload = "auto";
 
-		//Load the sound file (using a source element for expandability)
-		var src = document.createElement("source");
-		src.src = fileName + ".mp3";
-		soundFile.appendChild(src);
+				//Load the sound file (using a source element for expandability)
+				var src = document.createElement("source");
+				src.src = this.song_files[track_id];
+				soundFile.appendChild(src);
 
-		//Load the audio tag
-		//It auto plays as a fallback
-		soundFile.load();
-		soundFile.volume = 0.000000;
-		soundFile.play();
+				//Load the audio tag
+				//It auto plays as a fallback
+				soundFile.load();
+				soundFile.volume = 0.05000;
+				soundFile.play();
+				document.body.appendChild(soundFile);
 
-		//Plays the sound
-		function play() {
-		   //Set the current time for the audio file to the beginning
-		   soundFile.currentTime = 0.01;
-		   soundFile.volume = volume;
+				//Plays the sound
+				function play() {
+				   //Set the current time for the audio file to the beginning
 
-		   //Due to a bug in Firefox, the audio needs to be played after a delay
-		   setTimeout(function(){soundFile.play();},1);
+				   soundFile.currentTime = 0.01;
+				   soundFile.volume = volume;
+
+				   //Due to a bug in Firefox, the audio needs to be played after a delay
+				   setTimeout(function(){soundFile.play();},1);
+				}
 		}
   };
 
