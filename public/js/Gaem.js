@@ -31,7 +31,8 @@ define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
 
   Gaem.prototype.draw = function() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.player.draw(this.ctx);
+
+    //this.player.draw(this.ctx);
     if(this.showMenu) {
       this.graphics.draw_game_menu();
     } else {
@@ -41,7 +42,7 @@ define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
 
   Gaem.prototype.update = function(dt) {
     this.player.update(dt);
-    console.log(dt);
+   // console.log(dt);
   };
 
   Gaem.prototype.step = function() {
