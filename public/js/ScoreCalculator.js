@@ -15,8 +15,8 @@ define("ScoreCalculator", function() {
     var score = -1;
 
     this.currentTrack.some(function(note) {
-      var beginGap = note.start - 200;
-      var endGap = note.start + 200;
+      var beginGap = note.start - 100;
+      var endGap = note.start + 100;
 
       if (this.song.getCurrentTime() > endGap) {
         return false;
@@ -25,8 +25,8 @@ define("ScoreCalculator", function() {
       if (keyState[0].start > beginGap && keyState[0].start < endGap) {
         score = 10;
 
-        var minDuration = note.duration - 100;
-        var maxDuration = note.duration + 100;
+        var minDuration = note.duration - 50;
+        var maxDuration = note.duration + 50;
         if (keyState[0].duration < minDuration && keyState[0].duration > maxDuration) {
           score += 10;
         }
