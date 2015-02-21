@@ -34,21 +34,20 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
     return window.performance && window.performance.now ? window.performance.now() : new Date().getTime();
   }
 
-
   Gaem.prototype.keydown = function(event) {
     if (event.keyCode === 49) {
       // update keys data
       var storage = this.keys[event.keyCode-49];
       if (storage == undefined) {
-        this.keys[event.keyCode-49] = {"start":this.timestamp(), "duration":0};
+        this.keys[event.keyCode-49] = {"start": this.song.getCurrentTime(), "duration":0};
       }
       else {
-        var new_duration = this.timestamp() - storage.start;
-        this.keys[event.keyCode-49] = {"start":storage.start, "duration":new_duration};
+        var new_duration = this.song.getCurrentTime() - storage.start;
+        this.keys[event.keyCode-49] = {"start": storage.start, "duration":new_duration};
       }
     }
     if(event.keyCode === 27 && this.audioCreated) {
-	this.showMenu = !this.showMenu;
+      this.showMenu = !this.showMenu;
     }
   };
 
@@ -106,7 +105,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
 
   Gaem.prototype.selectSong = function() {
     this.currentTrack = this.song.gettrack(1);
-    this.scoreCalculator.setSong(this.currentTrack);
+    this.scoreCalculator.setSong(this.song, this.currentTrack);
   };
 
   Gaem.prototype.run = function() {

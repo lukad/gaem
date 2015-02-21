@@ -2,22 +2,23 @@ define("ScoreCalculator", function() {
   function ScoreCalculator() {
   };
 
-  ScoreCalculator.prototype.setSong = function(song) {
+  ScoreCalculator.prototype.setSong = function(song, currentTrack) {
     this.song = song;
+    this.currentTrack = currentTrack;
   };
 
-  ScoreCalculator.prototype.calculate = function(keyState, currentTimestamp) {
+  ScoreCalculator.prototype.calculate = function(keyState) {
     if (keyState[0] === undefined) {
       return 0;
     }
 
     var score = -1;
 
-    this.song.some(function(note) {
+    this.currentTrack.some(function(note) {
       var beginGap = note.start - 200;
       var endGap = note.start + 200;
 
-      if (currentTimestamp > endGap) {
+      if (this.song.getCurrentTime() > endGap) {
         return false;
       }
 
@@ -31,7 +32,7 @@ define("ScoreCalculator", function() {
         }
         return true;
       }
-    });
+    }.bind(this));
 
     return score;
   };
