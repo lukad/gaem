@@ -34,8 +34,12 @@ define("Graphics", ['Button'], function(Button) {
 	Graphics.prototype.onMouseDown = function(event) {
 		var x = event.clientX,
 		    y = event.clientY;
-		for(i = this.buttons.length - 1; i >= 0; i--) {
-			this.buttons[i].draw(this.ctx);
+
+		for (i = this.buttons.length - 1; i >= 0; i--) {
+			if (x >= this.buttons[i].x && x <= this.buttons[i].x + this.buttons[i].width &&
+					y >= this.buttons[i].y && y <= this.buttons[i].y + this.buttons[i].height) {
+						console.log("Pressed button:", this.buttons[i]);
+					}
 		}
 	};
 

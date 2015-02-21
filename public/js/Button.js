@@ -16,5 +16,13 @@ define('Button', function()	{
 		ctx.fillText(this.text, this.width / 2 + this.x, this.height / 2 + this.y);
 	};
 
+	Button.prototype.contains = function(x, y) {
+		if (x >= this.x && x <= this.x + this.width &&
+				y >= this.y && y <= this.y + this.height) {
+			return true;
+		};
+		return false;
+	};
+
 	return Button;
 });
