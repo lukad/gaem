@@ -22,11 +22,6 @@ define("ScoreCalculator", function() {
         return false;
       }
 
-      if (this.song.getCurrentTime() > this.song.getTrackEnd(0).start + this.song.getTrackEnd(0).duration) 
-      {
-        this.song.resetSong();
-      }
-
       if (keyState[0].start > beginGap && keyState[0].start < endGap) {
         score = 10;
 

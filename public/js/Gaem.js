@@ -1,5 +1,5 @@
-define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
-       function (Graphics, Player, Song, ScoreCalculator, Menu) {
+define("Gaem", ['Graphics', 'Song', 'ScoreCalculator', 'Menu'],
+       function (Graphics, Song, ScoreCalculator, Menu) {
 
   function Gaem() {
     this.width = 500;
@@ -16,7 +16,6 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
 
     this.audioCreated = false;
     this.showMenu = true;
-    this.player = new Player();
     this.keys = []
     this.last = this.timestamp();
     this.song = new Song();
@@ -77,8 +76,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
   };
 
   Gaem.prototype.play = function() {
-    this.score = 0;
-    this.song.playSong(1);
+    this.song.playSong(0);
     this.showMenu = !this.showMenu;
     this.audioCreated = true;
   };
