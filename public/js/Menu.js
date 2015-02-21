@@ -11,7 +11,7 @@ define("Menu", ['Button'], function(Button) {
 
 		this.buttons = [
 			new Button("play", buttonMargin, height / 3, buttonWidth, 75, onPlayPressed),
-			new Button("credits", buttonMargin, 0.6 * height, buttonWidth, 75)
+			new Button("credits", buttonMargin, 0.6 * height, buttonWidth, 75, function() {window.open('https://github.com/lukad/gaem', '_blank');})
 		];
 		canvas.addEventListener("mousedown", this.onMouseDown.bind(this));
 	}
