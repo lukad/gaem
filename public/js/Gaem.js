@@ -1,7 +1,18 @@
 define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player, Song, Gap) {
 
   function Gaem() {
+  
+	this.width = 500;
+	this.height = 500;
+  
     this.canvas = document.getElementById('canvas');
+	this.canvas.width = this.width;
+	this.canvas.height = this.height;
+	this.canvas.style.position = 'absolute';
+	this.canvas.style.marginLeft = -0.5*this.width+'px';
+	this.canvas.style.marginTop = -0.5*this.height+'px';
+	
+	
     this.ctx = this.canvas.getContext('2d');
 
     this.showMenu = false;
