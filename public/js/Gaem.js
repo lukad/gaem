@@ -32,9 +32,10 @@ define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
   Gaem.prototype.draw = function() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.player.draw(this.ctx);
-    this.graphics.draw();
     if(this.showMenu) {
       this.graphics.draw_game_menu();
+    } else {
+      this.graphics.draw();
     }
   };
 
@@ -47,28 +48,13 @@ define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
     var now = this.timestamp();
     var dt = Math.min(1, (now - this.last) / 1000);
 
-    if(this.showMenu) {
-      this.graphics.draw_game_menu();
-    } else {
-      this.update();
-      this.graphics.draw();		
+    if (!this.showMenu) {
+      this.update(dt);
     }
 
-    this.update(dt);
     this.draw();
     this.last = now;
 
-    window.requestAnimationFrame(this.step.bind(this));
-  };
-
-  Gaem.prototype.step = function() {
-    var now = this.timestamp();
-    var dt = Math.min(1, (now - this.last) / 1000);
-
-    this.update(dt);
-    this.draw();
-
-    this.last = now;
     window.requestAnimationFrame(this.step.bind(this));
   };
 
