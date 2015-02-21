@@ -81,7 +81,7 @@ define("Song", function () {
 				//Load the audio tag
 				//It auto plays as a fallback
 				soundFile.load();
-				soundFile.volume = 0.05000;
+				soundFile.volume = 1.000;
 				soundFile.play();
 				document.body.appendChild(soundFile);
 
