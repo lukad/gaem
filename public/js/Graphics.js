@@ -30,14 +30,18 @@ define("Graphics", ['Song'], function (Song) {
 		for (var i=0; i<columns; ++i) {
 			for (j=0; j<tracks[i].length; ++j) {
 				var note = tracks[i][j];
+				var start = note.start+lineY;
 
-					if(currentTime >= note.start && currentTime <= note.start + note.duration) {
+					if(currentTime >= start && currentTime <= start + note.duration) {
 						this.ctx.fillStyle="#000000";
+						this.ctx.shadowColor = '#ff0000';
+						this.ctx.shadowBlur = 20;
 					} else {
 						this.ctx.fillStyle="#555555";
+						this.ctx.shadowBlur = 0;
 					}
 					
-					this.ctx.fillRect(100+50*i, lineY-note.duration+currentTime-note.start, 20, note.duration);
+					this.ctx.fillRect(100+50*i, lineY-note.duration+currentTime-start, 20, note.duration);
 
 			}
 		}
