@@ -53,10 +53,10 @@ define("Song", function () {
   };
 
   Song.prototype.getCurrentTime = function() {
-   if (document.getElementsByTagName("audio")) {
-   	return document.getElementsByTagName("audio")[0].currentTime * 1000;
-   } 
-   return 0;
+    if (document.getElementsByTagName("audio").length != 0) {
+      return document.getElementsByTagName("audio")[0].currentTime * 1000;
+    } 
+    return 0;
   }
 
   Song.prototype.playSong = function(track_id) {

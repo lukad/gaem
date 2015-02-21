@@ -87,7 +87,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
     this.last = now;
 
     this.score += this.scoreCalculator.calculate(this.keys, now);
-    console.log(now, this.score);
+    console.log(this.song.getCurrentTime(), this.score);
     window.requestAnimationFrame(this.step.bind(this));
   };
 
