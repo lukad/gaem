@@ -52,11 +52,11 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 				
 				//this.ctx.beginPath();
 				if(currentTime >= start && currentTime <= start + note.duration) {
-					this.ctx.fillStyle=columnColors[i].playing;
-					this.ctx.shadowColor = columnColors[i].highlight;
+					this.ctx.fillStyle="#000000"; //columnColors[i].playing;
+					this.ctx.shadowColor = "#000000"; //columnColors[i].highlight;
 					this.ctx.shadowBlur = 15;
 				} else {
-					this.ctx.fillStyle=columnColors[i].notplaying;
+					this.ctx.fillStyle="#000000"; //columnColors[i].notplaying;
 					this.ctx.shadowBlur = 0;
 				}
 			
