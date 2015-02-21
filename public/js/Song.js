@@ -59,7 +59,14 @@ define("Song", function () {
     return 0;
   }
 
+  Song.prototype.resetSong = function() {
+    if (document.getElementsByTagName("audio").length !== 0) {
+      document.getElementsByTagName("audio")[0].remove();
+    }
+  }
+
   Song.prototype.playSong = function(track_id) {
+    this.resetSong();
   	//Create the audio tag
   	// ony one audio element
 		if (document.getElementsByTagName("audio").length==0) {

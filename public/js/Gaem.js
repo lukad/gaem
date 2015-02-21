@@ -77,6 +77,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
   };
 
   Gaem.prototype.play = function() {
+    this.score = 0;
     this.song.playSong(1);
     this.showMenu = !this.showMenu;
     this.audioCreated = true;
