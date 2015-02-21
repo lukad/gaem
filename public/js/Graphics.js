@@ -45,12 +45,12 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 			{"playing" : "#0000bb", "notplaying" : "#0000088", "highlight" : "#0000ff"},
 		]
 		
+		
 		for (var i=0; i<columns; ++i) {
 			for (j=0; j<tracks[i].length; ++j) {
 				var note = tracks[i][j];
 				var start = note.start;
 				
-				//this.ctx.beginPath();
 				if(currentTime >= start && currentTime <= start + note.duration) {
 					this.ctx.fillStyle="#000000"; //columnColors[i].playing;
 					this.ctx.shadowColor = "#000000"; //columnColors[i].highlight;
@@ -60,15 +60,12 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 					this.ctx.shadowBlur = 0;
 				}
 			
-				msLeftToBePlayed = Math.round(start-currentTime);
-				rectY = lineY - (msLeftToBePlayed+note.duration)*pxPerMs;
-				rectX = 100+3*100*pxPerMs*i;
-				
+				var msLeftToBePlayed = Math.round(start-currentTime);
+				var rectY = lineY - (msLeftToBePlayed+note.duration)*pxPerMs;
 				var dx = this.width / (columns+1);
-				rectX = dx + i*dx - 50*pxPerMs
+				var rectX = dx + i*dx - 50*pxPerMs
+				
 				this.ctx.fillRect(rectX, rectY, 100*pxPerMs, note.duration*pxPerMs);
-				//this.ctx.closePath();
-				//this.ctx.fill();
 			}
 		}
 		
