@@ -8,13 +8,12 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player
     this.player = new Player();
     this.keys = []
     this.last = this.timestamp();
-
     this.song = new Song();
     this.gap = new Gap();
 
     this.score = 0;
 
-    this.graphics = new Graphics(this.ctx, this.keys);
+    this.graphics = new Graphics(this.ctx, this.keys, this.canvas.width, this.canvas.height);
 
     document.addEventListener('keydown', this.keydown.bind(this));
     document.addEventListener('keyup', this.keyup.bind(this));
@@ -48,7 +47,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player
 
     //this.player.draw(this.ctx);
     if(this.showMenu) {
-      this.graphics.draw_game_menu();
+      this.graphics.drawGameMenu();
     } else {
       this.graphics.draw();
     }
