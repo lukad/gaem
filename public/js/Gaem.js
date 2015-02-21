@@ -21,7 +21,6 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
     this.last = this.timestamp();
     this.song = new Song();
     this.scoreCalculator = new ScoreCalculator();
-
     this.score = 0;
 
     this.graphics = new Graphics(this.ctx, this.keys, this.width, this.height);
@@ -71,6 +70,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
 	}
     } else {
       this.graphics.draw();
+      this.graphics.drawScore(this.score);
     }
   };
 
@@ -93,22 +93,15 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
     this.audioCreated = true;
   };
 
-  Gaem.prototype.step = function() {
-    var now = this.timestamp();
-    var dt = Math.min(1, (now - this.last) / 1000);
-
-    if (!this.showMenu) {
-      this.update(dt);
-    }
-
+  Gaem.prototype.frame = function() {
     this.draw();
-    this.last = now;
+    var now = this.timestamp();
 
     if (!this.showMenu) {
       this.score += this.scoreCalculator.calculate(this.keys, now);
     }
 
-    window.requestAnimationFrame(this.step.bind(this));
+    window.requestAnimationFrame(this.frame.bind(this));
   };
 
   Gaem.prototype.selectSong = function() {
@@ -119,7 +112,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
   Gaem.prototype.run = function() {
     this.selectSong();
 
-    window.requestAnimationFrame(this.step.bind(this));
+    window.requestAnimationFrame(this.frame.bind(this));
   };
 
   return Gaem;

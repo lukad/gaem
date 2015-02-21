@@ -23,10 +23,16 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 		}
 	};
 
+	Graphics.prototype.drawScore = function(score) {
+		console.log(score);
+		this.ctx.textAlign = 'left';
+		this.ctx.textBaseline = 'top';
+		this.ctx.fillText("score: " + score, 10, 10);
+	};
+
 
 	Graphics.prototype.draw = function() {
 		var currentTime = this.song.getCurrentTime();
-		console.log(currentTime);
 		var tracks = this.song.getTracks();
 		var columns = tracks.length;
 		var lineY = 400;
