@@ -96,7 +96,10 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
     this.draw();
     this.last = now;
 
-    this.score += this.scoreCalculator.calculate(this.keys, now);
+    if (!this.showMenu) {
+      this.score += this.scoreCalculator.calculate(this.keys, now);
+    }
+
     window.requestAnimationFrame(this.step.bind(this));
   };
 
