@@ -1,4 +1,4 @@
-define("Gaem", ['Graphics', 'Player', 'Song'], function (Graphics, Player, Song) {
+define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player, Song, Gap) {
 
   function Gaem() {
     this.canvas = document.getElementById('canvas');
@@ -7,10 +7,14 @@ define("Gaem", ['Graphics', 'Player', 'Song'], function (Graphics, Player, Song)
     this.showMenu = false;
     this.player = new Player();
     this.keys = []
-    this.last = this.timestamp();Song
+    this.last = this.timestamp();
+
+    this.song = new Song();
+    this.gap = new Gap();
+
+    this.score = 0;
 
     this.graphics = new Graphics(this.ctx, this.keys);
-    this.player = new Player();
 
     document.addEventListener('keydown', this.keydown.bind(this));
     document.addEventListener('keyup', this.keyup.bind(this));
@@ -66,10 +70,18 @@ define("Gaem", ['Graphics', 'Player', 'Song'], function (Graphics, Player, Song)
     this.draw();
     this.last = now;
 
+    this.score += this.gap.calculate(this.keys, now);
+    console.log(this.score);
     window.requestAnimationFrame(this.step.bind(this));
   };
 
+  Gaem.prototype.selectSong = function() {
+    this.currentTrack = this.song.gettrack(1);
+    this.gap.setSong(this.currentTrack);
+  };
+
   Gaem.prototype.run = function() {
+    this.selectSong();
     window.requestAnimationFrame(this.step.bind(this));
   };
 

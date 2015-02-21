@@ -43,10 +43,10 @@ define("Song", function () {
 
   Song.prototype.getTracks = function() {
     return this.songs;
-  }
+  };
 
-  Song.prototype.gettrack = function(track_id = 0) {
-    return this.song[track_id];
+  Song.prototype.gettrack = function(track_id) {
+    return this.songs[track_id];
   };
 
   Song.prototype.update = function() {
