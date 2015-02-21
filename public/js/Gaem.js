@@ -70,7 +70,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player
     this.draw();
     this.last = now;
 
-    this.score += this.gap.calculate(this.keys, now);
+    this.score += this.gap.calculate(this.keys);
     console.log(now, this.score);
     window.requestAnimationFrame(this.step.bind(this));
   };

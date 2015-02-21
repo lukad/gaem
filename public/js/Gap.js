@@ -6,18 +6,17 @@ define("Gap", function() {
     this.song = song;
   };
 
-  Gap.prototype.calculate = function(currentKeyState, currentTimestamp) {
-    if (currentKeyState[0] === undefined) {
+  Gap.prototype.calculate = function(keyState) {
+    if (keyState[0] === undefined) {
       return 0;
     }
 
     var score = -1;
 
     this.song.some(function(note) {
-      var beginningGap = note.start - 100;
+      var beginGap = note.start - 100;
       var endGap = note.start + 100;
-      var keyPressedStart = currentKeyState[0].start;
-      if (keyPressedStart > beginningGap && keyPressedStart < endGap) {
+      if (keyState[0].start > beginGap && keyState[0].start < endGap) {
         score = 1;
         return true;
       }
