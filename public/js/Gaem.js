@@ -4,7 +4,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player
     this.canvas = document.getElementById('canvas');
     this.ctx = this.canvas.getContext('2d');
 
-    this.showMenu = true;
+    this.showMenu = false;
     this.player = new Player();
     this.keys = []
     this.last = this.timestamp();
@@ -70,7 +70,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player
     this.draw();
     this.last = now;
 
-    this.score += this.gap.calculate(this.keys);
+    this.score += this.gap.calculate(this.keys, now);
     console.log(now, this.score);
     window.requestAnimationFrame(this.step.bind(this));
   };
