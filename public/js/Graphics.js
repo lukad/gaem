@@ -25,28 +25,26 @@ define("Graphics", ['Song'], function (Song) {
 		var currentTime = this.song.getCurrentTime();
 		var tracks = this.song.getTracks();
 		var columns = tracks.length;
+		var lineY = 400;
 		
 		for (var i=0; i<columns; ++i) {
 			for (j=0; j<tracks[i].length; ++j) {
 				var note = tracks[i][j];
 
-			//	if(currentTime >= note.start && currentTime <= note.start + note.duration) {
-					var diff = currentTime-note.start;
-					
-					if(diff <= 400 && diff >= 400-note.duration) {
+					if(currentTime >= note.start && currentTime <= note.start + note.duration) {
 						this.ctx.fillStyle="#000000";
 					} else {
 						this.ctx.fillStyle="#555555";
 					}
 					
-					this.ctx.fillRect(100+50*i, diff, 20, note.duration);
-			//	}
+					this.ctx.fillRect(100+50*i, lineY-note.duration+currentTime-note.start, 20, note.duration);
+
 			}
 		}
 		
 		this.ctx.beginPath();
-		this.ctx.moveTo(0,400);
-		this.ctx.lineTo(512,400);
+		this.ctx.moveTo(0,lineY);
+		this.ctx.lineTo(512,lineY);
 		this.ctx.stroke();
 	};
 	
