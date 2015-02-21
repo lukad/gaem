@@ -62,8 +62,11 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 			
 				msLeftToBePlayed = Math.round(start-currentTime);
 				rectY = lineY - (msLeftToBePlayed+note.duration)*pxPerMs;
-			
-				this.ctx.fillRect(100+3*100*pxPerMs*i, rectY, 100*pxPerMs, note.duration*pxPerMs);
+				rectX = 100+3*100*pxPerMs*i;
+				
+				var dx = this.width / (columns+1);
+				rectX = dx + i*dx - 50*pxPerMs
+				this.ctx.fillRect(rectX, rectY, 100*pxPerMs, note.duration*pxPerMs);
 				//this.ctx.closePath();
 				//this.ctx.fill();
 			}
