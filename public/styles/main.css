@@ -5,17 +5,3 @@ canvas {
   top: 50%;
   left: 50%;
 }
-
-#score-information {
-  position: absolute;
-  top: 50%;
-  left: 75%;
-  transform: translateY(-50%);
-}
-
-#score {
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold;
-  margin-top: 10px;
-}

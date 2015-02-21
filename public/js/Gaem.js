@@ -60,7 +60,6 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
   Gaem.prototype.draw = function() {
     this.ctx.clearRect(0, 0, this.width, this.height);
 
-    this.drawScore();
     //this.player.draw(this.ctx);
     if(this.showMenu) {
       this.menu.draw();
@@ -70,15 +69,6 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
     } else {
       this.graphics.draw();
       this.graphics.drawScore(this.score);
-    }
-  };
-
-  Gaem.prototype.drawScore = function() {
-    if (this.showMenu) {
-      document.getElementById('score-information').style.display = 'none';
-    } else {
-      document.getElementById('score-information').style.display = 'block';
-      document.getElementById('score').textContent = this.score;
     }
   };
 
@@ -104,7 +94,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
   };
 
   Gaem.prototype.selectSong = function() {
-    this.currentTrack = this.song.gettrack(1);
+    this.currentTrack = this.song.gettrack(0);
     this.scoreCalculator.setSong(this.song, this.currentTrack);
   };
 
