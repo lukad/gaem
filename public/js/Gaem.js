@@ -58,6 +58,8 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
   Gaem.prototype.draw = function() {
     this.ctx.clearRect(0, 0, this.width, this.height);
 
+    document.getElementById('score').textContent = this.score;
+
     //this.player.draw(this.ctx);
     if(this.showMenu) {
       this.menu.draw();
@@ -87,7 +89,6 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
     this.last = now;
 
     this.score += this.scoreCalculator.calculate(this.keys, now);
-    console.log(this.song.getCurrentTime(), this.score);
     window.requestAnimationFrame(this.step.bind(this));
   };
 
