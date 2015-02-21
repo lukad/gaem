@@ -2,7 +2,7 @@
 // drawing the game
 // handle changes between game menu and game
 
-define("Graphics", ['Song', 'Button'], function(Button, Song) {
+define("Graphics", ['Button', 'Song'], function(Button, Song) {
 
 	function Graphics(ctx, keys, width, height) {
 		this.ctx = ctx;
