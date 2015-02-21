@@ -10,6 +10,8 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 		this.song = new Song();
 		this.width = width;
 		this.height = height;
+		this.pxPerMs = 0.2;
+		
 		this.buttons = [
 			new Button("start", width / 3, height / 3, 200, 75),
 			new Button("credits", width / 3, 0.6 * height, 200, 75)
@@ -36,7 +38,6 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 		var columns = tracks.length;
 		var lineY = 400;
 		var zoom = 0.1;
-		var pxPerMs = 0.2;
 		
 		var columnColors = [
 			{"playing" : "#bb0000", "notplaying" : "#8800000", "highlight" : "#ff0000"},
@@ -60,11 +61,11 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 				}
 			
 				var msLeftToBePlayed = Math.round(start-currentTime);
-				var rectY = lineY - (msLeftToBePlayed+note.duration)*pxPerMs;
+				var rectY = lineY - (msLeftToBePlayed+note.duration)*this.pxPerMs;
 				var dx = this.width / (columns+1);
-				var rectX = dx + i*dx - 50*pxPerMs
+				var rectX = dx + i*dx - 50*this.pxPerMs
 				
-				this.ctx.fillRect(rectX, rectY, 100*pxPerMs, note.duration*pxPerMs);
+				this.ctx.fillRect(rectX, rectY, 100*this.pxPerMs, note.duration*this.pxPerMs);
 			}
 		}
 		
@@ -85,5 +86,14 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 		}
 	};
 
+	Graphics.prototype.makeLarger = function() {
+		this.pxPerMs += 0.03;
+	};
+	
+	Graphics.prototype.makeSmaller = function() {
+		this.pxPerMs -= 0.03;
+	};
+
+	
 	return Graphics;
 });

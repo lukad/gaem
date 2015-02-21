@@ -49,6 +49,8 @@ define("Gaem", ['Graphics', 'Song', 'ScoreCalculator', 'Menu'],
       this.score = 0;
       this.showMenu = !this.showMenu;
     }
+	if (event.keyCode === 38) this.graphics.makeLarger();
+	if (event.keyCode === 40) this.graphics.makeSmaller();
   };
 
   Gaem.prototype.keyup = function(event) {
