@@ -10,7 +10,7 @@ define("Gaem", ['Player'], function (Player) {
 
 	  document.addEventListener('keydown', this.keydown.bind(this));
 	  document.addEventListener('keyup', this.keyup.bind(this));
-	};
+	}
 
 	Gaem.prototype.keydown = function(event) {
 		this.keys[event.keyCode] = true;

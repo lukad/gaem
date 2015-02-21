@@ -19,7 +19,7 @@ gulp.task('jshint', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['./public/js/**/*.js'], ['jshint']);
+  gulp.watch(['./public/js/**/*.js', '!./public/js/**'], ['jshint']);
 });
 
 gulp.task('default', ['webserver', 'livereload', 'watch']);
