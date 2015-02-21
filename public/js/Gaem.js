@@ -58,13 +58,21 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
   Gaem.prototype.draw = function() {
     this.ctx.clearRect(0, 0, this.width, this.height);
 
-    document.getElementById('score').textContent = this.score;
-
+    this.drawScore();
     //this.player.draw(this.ctx);
     if(this.showMenu) {
       this.menu.draw();
     } else {
       this.graphics.draw();
+    }
+  };
+
+  Gaem.prototype.drawScore = function() {
+    if (this.showMenu) {
+      document.getElementById('score-information').style.display = 'none';
+    } else {
+      document.getElementById('score-information').style.display = 'block';
+      document.getElementById('score').textContent = this.score;
     }
   };
 

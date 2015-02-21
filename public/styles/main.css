@@ -6,7 +6,7 @@ canvas {
   left: 50%;
 }
 
-.score-information {
+#score-information {
   position: absolute;
   top: 50%;
   left: 75%;
