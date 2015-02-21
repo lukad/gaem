@@ -14,8 +14,24 @@ define("Graphics", function () {
 		ctx.drawImage(start_button, ctx.getWidth / 3, ctx.getHeight / 3);
 	};
 
-	Graphics.prototype.draw = function() {
-	 console.log("Graphics:draw");
+	Graphics.prototype.draw = function(song) {
+	 
+		/*
+		var currentTime = song.getCurrentTime();
+		var tracks = song.getTracks();
+		var columns = tracks.length;
+		
+		for (var i=0; i<columns; ++i) {
+			for (j=0; j<tracks[i].length; ++j) {
+				var note = tracks[i][j];
+				
+				if(currentTime >= note.getStartTime() && currentTime <= note.getStartTime() + note.getLength()) {
+					drawNote();
+				}
+			}
+		}
+		*/
+		
 	};
 
 	Graphics.prototype.update = function() {
