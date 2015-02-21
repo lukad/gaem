@@ -14,6 +14,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
 
     this.ctx = canvas.getContext('2d');
 
+    this.audioCreated = false;
     this.showMenu = true;
     this.player = new Player();
     this.keys = []
@@ -47,6 +48,9 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
         this.keys[event.keyCode-49] = {"start":storage.start, "duration":new_duration};
       }
     }
+    if(event.keyCode === 27 && this.audioCreated) {
+	this.showMenu = !this.showMenu;
+    }
   };
 
   Gaem.prototype.keyup = function(event) {
@@ -61,6 +65,9 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
     //this.player.draw(this.ctx);
     if(this.showMenu) {
       this.menu.draw();
+	if(this.audioCreated){
+		document.getElementsByTagName("audio")[0].currentTime = 0;
+	}
     } else {
       this.graphics.draw();
     }
@@ -73,6 +80,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
   Gaem.prototype.play = function() {
     this.song.playSong(1);
     this.showMenu = !this.showMenu;
+    this.audioCreated = true;
   };
 
   Gaem.prototype.step = function() {
