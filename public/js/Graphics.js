@@ -13,6 +13,7 @@ define("Graphics", ['Button'], function(Button) {
 			new Button("start", width / 3, height / 3, 200, 75),
 			new Button("credits", width / 3, 0.6 * height, 200, 75)
 		];
+		document.addEventListener("mousedown", this.onMouseDown.bind(this));
 	};
 
 	Graphics.prototype.drawGameMenu = function() {
@@ -28,6 +29,14 @@ define("Graphics", ['Button'], function(Button) {
 
 	Graphics.prototype.update = function() {
 		console.log("Graphics:update");
+	};
+
+	Graphics.prototype.onMouseDown = function(event) {
+		var x = event.clientX,
+		    y = event.clientY;
+		for(i = this.buttons.length - 1; i >= 0; i--) {
+			this.buttons[i].draw(this.ctx);
+		}
 	};
 
 	return Graphics;
