@@ -1,12 +1,12 @@
-define("Gap", function() {
-  function Gap() {
+define("ScoreCalculator", function() {
+  function ScoreCalculator() {
   };
 
-  Gap.prototype.setSong = function(song) {
+  ScoreCalculator.prototype.setSong = function(song) {
     this.song = song;
   };
 
-  Gap.prototype.calculate = function(keyState, currentTimestamp) {
+  ScoreCalculator.prototype.calculate = function(keyState, currentTimestamp) {
     if (keyState[0] === undefined) {
       return 0;
     }
@@ -36,5 +36,5 @@ define("Gap", function() {
     return score;
   };
 
-  return Gap;
+  return ScoreCalculator;
 });
