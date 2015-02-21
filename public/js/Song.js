@@ -27,14 +27,14 @@ define("Song", function () {
 		{"start": 15293, "duration":100},
 		{"start": 15921, "duration":100},
 		{"start": 16214, "duration":100},
-		{"start": 17779, "duration":0},
-		{"start": 18257, "duration":0},
-		{"start": 18396, "duration":0},
-		{"start": 20895, "duration":0},
-		{"start": 23341, "duration":0},
-		{"start": 23960, "duration":0},
-		{"start": 25775, "duration":0},
-		{"start": 28216, "duration":0}
+		{"start": 17779, "duration":100},
+		{"start": 18257, "duration":100},
+		{"start": 18396, "duration":100},
+		{"start": 20895, "duration":100},
+		{"start": 23341, "duration":100},
+		{"start": 23960, "duration":100},
+		{"start": 25775, "duration":100},
+		{"start": 28216, "duration":100}
 	  ]
 	  this.songs = [this.sample_song, this.guitar_solo];
 	  
