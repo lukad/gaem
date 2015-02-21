@@ -36,7 +36,7 @@ define("Song", function () {
 		{"start": 25775, "duration":0},
 		{"start": 28216, "duration":0}
 	  ]
-	  this.songs = [this.sample_song];
+	  this.songs = [this.sample_song, this.guitar_solo];
 	};
 
 	Song.prototype.gettrack = function(track_id = 0) {
