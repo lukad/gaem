@@ -9,7 +9,7 @@
 define("Song", function () {
 
 	function Song() {
-	  this.sample_song = [{"start": "1", "duration":"0"}];
+	  this.sample_song = [{"start": 1, "duration":0}];
 	  this.guitar_solo = [
 	  // baseine
 		{"start": 245,   "duration":0},
