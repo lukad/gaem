@@ -10,7 +10,7 @@ define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
     this.keys = {};
     this.last = this.timestamp();
 	  
-    this.graphics = new Graphics(this.ctx, this.keys);
+    this.graphics = new Graphics(this.ctx, this.keys, this.canvas.width, this.canvas.height);
     this.player = new Player();
 
     document.addEventListener('keydown', this.keydown.bind(this));
@@ -33,7 +33,7 @@ define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.player.draw(this.ctx);
     if(this.showMenu) {
-      this.graphics.draw_game_menu();
+      this.graphics.drawGameMenu();
     } else {
       this.graphics.draw();
     }
