@@ -10,8 +10,8 @@ define("Graphics", ['Button'], function(Button) {
 		this.width = width;
 		this.height = height;
 		this.buttons = [
-			new Button(width / 3, height / 3, 200, 75),
-			new Button(width / 3, 0.6 * height, 200, 75)
+			new Button("start", width / 3, height / 3, 200, 75),
+			new Button("credits", width / 3, 0.6 * height, 200, 75)
 		];
 	};
 
@@ -20,8 +20,6 @@ define("Graphics", ['Button'], function(Button) {
 		for(i = this.buttons.length - 1; i >= 0; i--) {
 			this.buttons[i].draw(this.ctx);
 		}
-		//this.ctx.fillText(rect);
-		//this.ctx.fillText();
 	};
 
 	Graphics.prototype.draw = function() {

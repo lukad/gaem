@@ -1,5 +1,6 @@
 define('Button', function()	{
-	function Button(x, y, width, height, callback) {
+	function Button(text, x, y, width, height, callback) {
+		this.text = text;
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -8,7 +9,11 @@ define('Button', function()	{
 	}
 
 	Button.prototype.draw = function(ctx) {
-		ctx.strokeRect(this.x, this.y, this.width, this.height);	
+		ctx.font = "36px monospace";
+		ctx.textAlign = "center";
+		ctx.textBaseline = "middle";
+		ctx.strokeRect(this.x, this.y, this.width, this.height);
+		ctx.fillText(this.text, this.width / 2 + this.x, this.height / 2 + this.y);
 	};
 
 	return Button;
