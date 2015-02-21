@@ -10,6 +10,32 @@ define("Song", function () {
 
 	function Song() {
 	  this.sample_song = [{"start": "1", "duration":"0"}];
+	  this.guitar_solo = [
+	  // baseine
+		{"start": 245,   "duration":0},
+		{"start": 886,   "duration":0},
+		{"start": 2792,  "duration":0},
+		{"start": 3419,  "duration":0},
+		{"start": 5311,  "duration":0},
+		{"start": 6269,  "duration":0},
+		{"start": 7834,  "duration":0},
+		{"start": 8469,  "duration":0},
+		{"start": 1039,  "duration":0},
+		{"start": 10958, "duration":0},
+		{"start": 12826, "duration":0},
+		{"start": 13431, "duration":0},
+		{"start": 15293, "duration":0},
+		{"start": 15921, "duration":0},
+		{"start": 16214, "duration":0},
+		{"start": 17779, "duration":0},
+		{"start": 18257, "duration":0},
+		{"start": 18396, "duration":0},
+		{"start": 20895, "duration":0},
+		{"start": 23341, "duration":0},
+		{"start": 23960, "duration":0},
+		{"start": 25775, "duration":0},
+		{"start": 28216, "duration":0}
+	  ]
 	  this.songs = [this.sample_song];
 	};
 
