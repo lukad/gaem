@@ -10,7 +10,7 @@ define("Player", function () {
 	};
 
 	Player.prototype.update = function(dt) {
-	  this.x += 5 * dt;
+	  this.x += 50 * dt;
 	};
 
 	return Player;
