@@ -54,7 +54,7 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 				if(currentTime >= start && currentTime <= start + note.duration) {
 					this.ctx.fillStyle="#000000"; //columnColors[i].playing;
 					this.ctx.shadowColor = "#000000"; //columnColors[i].highlight;
-					this.ctx.shadowBlur = 15;
+					this.ctx.shadowBlur = 100*this.pxPerMs;
 				} else {
 					this.ctx.fillStyle="#000000"; //columnColors[i].notplaying;
 					this.ctx.shadowBlur = 0;
