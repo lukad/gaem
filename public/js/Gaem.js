@@ -59,7 +59,6 @@ define("Gaem", ['Graphics', 'Song', 'ScoreCalculator', 'Menu'],
   Gaem.prototype.draw = function() {
     this.ctx.clearRect(0, 0, this.width, this.height);
 
-    //this.player.draw(this.ctx);
     if(this.showMenu) {
       this.menu.draw();
 	if(this.audioCreated){
@@ -69,10 +68,6 @@ define("Gaem", ['Graphics', 'Song', 'ScoreCalculator', 'Menu'],
       this.graphics.draw();
       this.graphics.drawScore(this.score);
     }
-  };
-
-  Gaem.prototype.update = function(dt) {
-    this.player.update(dt);
   };
 
   Gaem.prototype.play = function() {
