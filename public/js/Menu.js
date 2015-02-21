@@ -1,29 +1,35 @@
 define("Menu", ['Button'], function(Button) {
 
-	function Menu(ctx, width, height) {
+	function Menu(ctx, canvas, width, height, onPlayPressed) {
 		this.ctx = ctx;
 		this.width = width;
 		this.height = height;
+		this.canvas = canvas;
+
+		var buttonMargin = width / 8;
+		var buttonWidth = width - buttonMargin * 2;
+
 		this.buttons = [
-			new Button("play", width / 3, height / 3, 200, 75),
-			new Button("credits", width / 3, 0.6 * height, 200, 75)
+			new Button("play", buttonMargin, height / 3, buttonWidth, 75, onPlayPressed),
+			new Button("credits", buttonMargin, 0.6 * height, buttonWidth, 75)
 		];
-		document.addEventListener("mousedown", this.onMouseDown.bind(this));
+		canvas.addEventListener("mousedown", this.onMouseDown.bind(this));
 	}
 
 	Menu.prototype.draw = function() {
-		for(i = this.buttons.length - 1; i >= 0; i--) {
+		for (i = this.buttons.length - 1; i >= 0; i--) {
 			this.buttons[i].draw(this.ctx);
 		}
 	};
 
 	Menu.prototype.onMouseDown = function(event) {
-		var x = event.clientX,
-		    y = event.clientY;
+		var rect = this.canvas.getBoundingClientRect();
+		var x = event.clientX - rect.left,
+		    y = event.clientY - rect.top;
 
-		for (i = this.buttons.length - 1; i >= 0; i--) {
-			if(this.button[i].contains(x, y)) {	
-				console.log("Pressed button:", this.buttons[i]);
+		for (var i = 0; i < this.buttons.length; i++) {
+			if (this.buttons[i].contains(x, y)) {	
+				this.buttons[i].callback();
 			}
 		}
 	};

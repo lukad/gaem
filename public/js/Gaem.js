@@ -2,7 +2,6 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
        function (Graphics, Player, Song, ScoreCalculator, Menu) {
 
   function Gaem() {
-  
     this.width = 500;
     this.height = 500;
 
@@ -15,7 +14,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
 
     this.ctx = canvas.getContext('2d');
 
-    this.showMenu = false;
+    this.showMenu = true;
     this.player = new Player();
     this.keys = []
     this.last = this.timestamp();
@@ -25,7 +24,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
     this.score = 0;
 
     this.graphics = new Graphics(this.ctx, this.keys, this.width, this.height);
-    this.menu = new Menu(this.ctx, canvas.width, canvas.height);
+    this.menu = new Menu(this.ctx, canvas, canvas.width, canvas.height, this.play.bind(this));
 
     document.addEventListener('keydown', this.keydown.bind(this));
     document.addEventListener('keyup', this.keyup.bind(this));
@@ -71,6 +70,11 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
     this.player.update(dt);
   };
 
+  Gaem.prototype.play = function() {
+    this.song.playSong(1);
+    this.showMenu = !this.showMenu;
+  };
+
   Gaem.prototype.step = function() {
     var now = this.timestamp();
     var dt = Math.min(1, (now - this.last) / 1000);
@@ -94,7 +98,6 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
 
   Gaem.prototype.run = function() {
     this.selectSong();
-    this.song.playSong(1);
 
     window.requestAnimationFrame(this.step.bind(this));
   };
