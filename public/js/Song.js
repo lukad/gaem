@@ -9,7 +9,7 @@
 define("Song", function () {
 
   function Song() {
-    this.song_files = ['/songs/guitar_solo.mp3'];
+    this.song_files = ['songs/guitar_solo.mp3'];
     this.sample_song = [{"start": 1, "duration":100}];
     this.guitar_solo = [
       // baseine
