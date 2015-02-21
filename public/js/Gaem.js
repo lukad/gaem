@@ -1,4 +1,4 @@
-define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
+define("Gaem", ['Graphics', 'Player', 'Song'], function (Graphics, Player, Song) {
 
   function Gaem() {
     this.canvas = document.getElementById('canvas');
@@ -7,8 +7,8 @@ define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
     this.showMenu = false;
     this.player = new Player();
     this.keys = []
-    this.last = this.timestamp();
-	  
+    this.last = this.timestamp();Song
+
     this.graphics = new Graphics(this.ctx, this.keys);
     this.player = new Player();
 
@@ -22,17 +22,14 @@ define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
 
 
   Gaem.prototype.keydown = function(event) {
-    if (event.keyCode === 49) 
-    {
+    if (event.keyCode === 49) {
       // update keys data
       var storage = this.keys[event.keyCode-49];
-      if (storage == undefined) 
-      {
+      if (storage == undefined) {
         this.keys[event.keyCode-49] = {"start":this.timestamp(), "duration":0};
       }
-      else 
-      {
-        var new_duration = this.timestamp() - storage.start;  
+      else {
+        var new_duration = this.timestamp() - storage.start;
         this.keys[event.keyCode-49] = {"start":storage.start, "duration":new_duration};
       }
     }
