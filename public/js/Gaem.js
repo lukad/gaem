@@ -5,11 +5,13 @@ define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
     this.ctx = this.canvas.getContext('2d');
 
     this.showMenu = false;
-    this.graphics = new Graphics();
     this.player = new Player();
 
-    this.keys = new Date().getTime();
+    this.keys = {};
     this.last = this.timestamp();
+	  
+    this.graphics = new Graphics(this.ctx, this.keys);
+    this.player = new Player();
 
     document.addEventListener('keydown', this.keydown.bind(this));
     document.addEventListener('keyup', this.keyup.bind(this));
@@ -45,12 +47,17 @@ define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
     var now = this.timestamp();
     var dt = Math.min(1, (now - this.last) / 1000);
 
+    if(this.showMenu) {
+      this.graphics.draw_game_menu();
+    } else {
+      this.update();
+      this.graphics.draw();		
+    }
+
     this.update(dt);
     this.draw();
-
     this.last = now;
 
-    
     window.requestAnimationFrame(this.step.bind(this));
   };
 
