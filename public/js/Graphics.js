@@ -2,7 +2,7 @@
 // drawing the game
 // handle changes between game menu and game
 
-define("Graphics", function () {
+define("Graphics", ['Button'], function(Button) {
 
 	function Graphics(ctx, keys, width, height) {
 		this.ctx = ctx;
@@ -32,18 +32,5 @@ define("Graphics", function () {
 		console.log("Graphics:update");
 	};
 
-	function Button(x, y, width, height, callback) {
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-		this.callback = callback;
-	}
-
-	Button.prototype.draw = function(ctx) {
-		ctx.strokeRect(this.x, this.y, this.width, this.height);	
-	};
-
 	return Graphics;
-
 });
