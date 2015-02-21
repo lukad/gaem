@@ -18,7 +18,6 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 	}
 
 	Graphics.prototype.drawGameMenu = function() {
-	 	console.log("Graphics:draw_game_menu");
 		for(i = this.buttons.length - 1; i >= 0; i--) {
 			this.buttons[i].draw(this.ctx);
 		}
@@ -58,7 +57,6 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 	
 
 	Graphics.prototype.update = function() {
-		console.log("Graphics:update");
 	};
 
 	Graphics.prototype.onMouseDown = function(event) {

@@ -4,7 +4,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player
     this.canvas = document.getElementById('canvas');
     this.ctx = this.canvas.getContext('2d');
 
-    this.showMenu = false;
+    this.showMenu = true;
     this.player = new Player();
     this.keys = []
     this.last = this.timestamp();
