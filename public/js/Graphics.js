@@ -12,6 +12,10 @@ define("Graphics", function () {
 	Graphics.prototype.draw_game_menu = function() {
 	 	console.log("Graphics:draw_game_menu");
 		ctx.drawImage(start_button, ctx.getWidth / 3, ctx.getHeight / 3);
+		
+		
+		
+		
 	};
 
 	Graphics.prototype.draw = function(song) {
@@ -25,7 +29,7 @@ define("Graphics", function () {
 			for (j=0; j<tracks[i].length; ++j) {
 				var note = tracks[i][j];
 				
-				if(currentTime >= note.getStartTime() && currentTime <= note.getStartTime() + note.getLength()) {
+				if(currentTime >= note.start && currentTime <= note.start + note.duration) {
 					drawNote();
 				}
 			}
@@ -33,6 +37,7 @@ define("Graphics", function () {
 		*/
 		
 	};
+	
 
 	Graphics.prototype.update = function() {
 		console.log("Graphics:update");
