@@ -5,15 +5,15 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player
 	this.width = 500;
 	this.height = 500;
   
-    this.canvas = document.getElementById('canvas');
-	this.canvas.width = this.width;
-	this.canvas.height = this.height;
-	this.canvas.style.position = 'absolute';
-	this.canvas.style.marginLeft = -0.5*this.width+'px';
-	this.canvas.style.marginTop = -0.5*this.height+'px';
+    var canvas = document.getElementById('canvas');
+	canvas.width = this.width;
+	canvas.height = this.height;
+	canvas.style.position = 'absolute';
+	canvas.style.marginLeft = -0.5*this.width+'px';
+	canvas.style.marginTop = -0.5*this.height+'px';
 	
 	
-    this.ctx = this.canvas.getContext('2d');
+    this.ctx = canvas.getContext('2d');
 
     this.showMenu = false;
     this.player = new Player();
@@ -24,7 +24,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player
 
     this.score = 0;
 
-    this.graphics = new Graphics(this.ctx, this.keys, this.canvas.width, this.canvas.height);
+    this.graphics = new Graphics(this.ctx, this.keys, this.width, this.height);
 
     document.addEventListener('keydown', this.keydown.bind(this));
     document.addEventListener('keyup', this.keyup.bind(this));
@@ -56,7 +56,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player
   };
 
   Gaem.prototype.draw = function() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.clearRect(0, 0, this.width, this.height);
 
     //this.player.draw(this.ctx);
     if(this.showMenu) {
