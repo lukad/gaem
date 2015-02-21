@@ -6,8 +6,7 @@ define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
 
     this.showMenu = false;
     this.player = new Player();
-
-    this.keys = {};
+    this.keys = []
     this.last = this.timestamp();
 	  
     this.graphics = new Graphics(this.ctx, this.keys);
@@ -21,12 +20,26 @@ define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
     return window.performance && window.performance.now ? window.performance.now() : new Date().getTime();
   }
 
+
   Gaem.prototype.keydown = function(event) {
-    this.keys[event.keyCode] = true;
+    if (event.keyCode === 49) 
+    {
+      // update keys data
+      var storage = this.keys[event.keyCode-49];
+      if (storage == undefined) 
+      {
+        this.keys[event.keyCode-49] = {"start":this.timestamp(), "duration":0};
+      }
+      else 
+      {
+        var new_duration = this.timestamp() - storage.start;  
+        this.keys[event.keyCode-49] = {"start":storage.start, "duration":new_duration};
+      }
+    }
   };
 
   Gaem.prototype.keyup = function(event) {
-    this.keys[event.keyCode] = false;
+     this.keys[event.keyCode-49] = undefined;
   };
 
   Gaem.prototype.draw = function() {
@@ -42,7 +55,7 @@ define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
 
   Gaem.prototype.update = function(dt) {
     this.player.update(dt);
-   // console.log(dt);
+    // console.log(this.keys[0])
   };
 
   Gaem.prototype.step = function() {
