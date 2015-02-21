@@ -1,9 +1,11 @@
-define("Gaem", ['Player'], function (Player) {
+define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
 
 	function Gaem() {
 	  this.canvas = document.getElementById('canvas');
 	  this.ctx = this.canvas.getContext('2d');
 
+	  this.showMenu = false;
+	  this.graphics = new Graphics();
 	  this.player = new Player();
 
 	  this.keys = {};
@@ -30,9 +32,14 @@ define("Gaem", ['Player'], function (Player) {
 	};
 
 	Gaem.prototype.step = function() {
-	  this.update();
-	  this.draw();
-	  window.requestAnimationFrame(this.step.bind(this));
+		this.update();
+
+		this.graphics.draw();
+		if(this.showMenu) {
+			this.graphics.draw_game_menu();
+		}
+	
+		window.requestAnimationFrame(this.step.bind(this));
 	};
 
 	Gaem.prototype.run = function() {
