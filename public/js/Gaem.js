@@ -62,6 +62,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
   Gaem.prototype.draw = function() {
     this.ctx.clearRect(0, 0, this.width, this.height);
 
+    this.drawScore();
     //this.player.draw(this.ctx);
     if(this.showMenu) {
       this.menu.draw();
@@ -70,6 +71,15 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
 	}
     } else {
       this.graphics.draw();
+    }
+  };
+
+  Gaem.prototype.drawScore = function() {
+    if (this.showMenu) {
+      document.getElementById('score-information').style.display = 'none';
+    } else {
+      document.getElementById('score-information').style.display = 'block';
+      document.getElementById('score').textContent = this.score;
     }
   };
 
@@ -94,8 +104,10 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'ScoreCalculator', 'Menu'],
     this.draw();
     this.last = now;
 
-    this.score += this.scoreCalculator.calculate(this.keys, now);
-    console.log(this.song.getCurrentTime(), this.score);
+    if (!this.showMenu) {
+      this.score += this.scoreCalculator.calculate(this.keys, now);
+    }
+
     window.requestAnimationFrame(this.step.bind(this));
   };
 

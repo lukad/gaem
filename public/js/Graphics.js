@@ -31,29 +31,35 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 		var columns = tracks.length;
 		var lineY = 400;
 		var zoom = 0.1;
-		var pxPerMs = 0.05;
+		var pxPerMs = 0.2;
 		
-		this.ctx.fillText("time: " + Math.round(currentTime),10,10);
-
+		var columnColors = [
+			{"playing" : "#bb0000", "notplaying" : "#8800000", "highlight" : "#ff0000"},
+			{"playing" : "#00bb00", "notplaying" : "#0008800", "highlight" : "#00ff00"},
+			{"playing" : "#0000bb", "notplaying" : "#0000088", "highlight" : "#0000ff"},
+		]
+		
 		for (var i=0; i<columns; ++i) {
 			for (j=0; j<tracks[i].length; ++j) {
 				var note = tracks[i][j];
 				var start = note.start;
 				
+				//this.ctx.beginPath();
 				if(currentTime >= start && currentTime <= start + note.duration) {
-					this.ctx.fillStyle="#000000";
-					this.ctx.shadowColor = '#ff0000';
-					this.ctx.shadowBlur = 5;
+					this.ctx.fillStyle=columnColors[i].playing;
+					this.ctx.shadowColor = columnColors[i].highlight;
+					this.ctx.shadowBlur = 15;
 				} else {
-					this.ctx.fillStyle="#555555";
+					this.ctx.fillStyle=columnColors[i].notplaying;
 					this.ctx.shadowBlur = 0;
 				}
 			
 				msLeftToBePlayed = Math.round(start-currentTime);
 				rectY = lineY - (msLeftToBePlayed+note.duration)*pxPerMs;
 			
-				this.ctx.fillRect(100+50*i, rectY, 100*pxPerMs, note.duration*pxPerMs);
-
+				this.ctx.fillRect(100+3*100*pxPerMs*i, rectY, 100*pxPerMs, note.duration*pxPerMs);
+				//this.ctx.closePath();
+				//this.ctx.fill();
 			}
 		}
 		
