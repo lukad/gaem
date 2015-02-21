@@ -11,16 +11,19 @@ define("Gap", function() {
       return 0;
     }
 
-    this.song.forEach(function(note) {
+    var score = -1;
+
+    this.song.some(function(note) {
       var beginningGap = note.start - 100;
       var endGap = note.start + 100;
       var keyPressedStart = currentKeyState[0].start;
       if (keyPressedStart > beginningGap && keyPressedStart < endGap) {
-        return 1;
+        score = 1;
+        return true;
       }
     });
 
-    return -1;
+    return score;
   };
 
   return Gap;

@@ -39,7 +39,9 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player
   };
 
   Gaem.prototype.keyup = function(event) {
-     this.keys[event.keyCode-49] = undefined;
+    if (event.keyCode === 49) {
+      this.keys[event.keyCode-49] = undefined;
+    }
   };
 
   Gaem.prototype.draw = function() {
@@ -55,7 +57,6 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player
 
   Gaem.prototype.update = function(dt) {
     this.player.update(dt);
-    // console.log(this.keys[0])
   };
 
   Gaem.prototype.step = function() {
@@ -70,7 +71,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player
     this.last = now;
 
     this.score += this.gap.calculate(this.keys, now);
-    console.log(this.score);
+    console.log(now, this.score);
     window.requestAnimationFrame(this.step.bind(this));
   };
 
