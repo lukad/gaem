@@ -4,22 +4,27 @@ define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
 	  this.canvas = document.getElementById('canvas');
 	  this.ctx = this.canvas.getContext('2d');
 
+	  this.keys = {};
+	  
 	  this.showMenu = false;
-	  this.graphics = new Graphics();
+	  this.graphics = new Graphics(ctx, keys);
 	  this.player = new Player();
 
-	  this.keys = {};
 
 	  document.addEventListener('keydown', this.keydown.bind(this));
 	  document.addEventListener('keyup', this.keyup.bind(this));
 	}
 
+	
+	
 	Gaem.prototype.keydown = function(event) {
 		this.keys[event.keyCode] = true;
+		
 	};
 
 	Gaem.prototype.keyup = function(event) {
 		this.keys[event.keyCode] = false;
+		
 	};
 
 	Gaem.prototype.draw = function() {
@@ -32,11 +37,12 @@ define("Gaem", ['Graphics', 'Player'], function (Graphics, Player) {
 	};
 
 	Gaem.prototype.step = function() {
-		this.update();
 
-		this.graphics.draw();
 		if(this.showMenu) {
 			this.graphics.draw_game_menu();
+		} else {
+			this.update();
+			this.graphics.draw();		
 		}
 	
 		window.requestAnimationFrame(this.step.bind(this));

@@ -4,10 +4,9 @@
 
 define("Graphics", function () {
 
-	function Graphics(ctx) {
-		var this.ctx = ctx;
-		var start_button = new Image(200, 75);
-		start_button.src = "res/start.png";
+	function Graphics(ctx, keys) {
+		this.ctx = ctx;
+		this.keys = keys;
 	};
 
 	Graphics.prototype.draw_game_menu = function() {
