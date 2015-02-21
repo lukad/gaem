@@ -2,7 +2,7 @@
 // drawing the game
 // handle changes between game menu and game
 
-define("Graphics", function () {
+define("Graphics", ['Song'], function (Realsong) {
 
 	function Graphics(ctx, keys) {
 		this.ctx = ctx;
@@ -34,8 +34,9 @@ define("Graphics", function () {
 			}
 		}
 		
-		this.song = new Song();
+		//this.song = new Song();
 
+		this.realSong = new Realsong();
 	};
 
 	
@@ -46,10 +47,12 @@ define("Graphics", function () {
 			
 	};
 
+
+
 	Graphics.prototype.draw = function() {
 	
-		var currentTime = this.song.getCurrentTime();
-		var tracks = this.song.getTracks();
+		var currentTime = this.realSong.getCurrentTime();
+		var tracks = this.realSong.getTracks();
 		var columns = tracks.length;
 		
 		for (var i=0; i<columns; ++i) {
@@ -65,7 +68,7 @@ define("Graphics", function () {
 						this.ctx.fillStyle="#555555";
 					}
 					
-					this.ctx.fillRect(100, diff, 20, note.duration);
+					this.ctx.fillRect(100+50*i, diff, 20, note.duration);
 				//	this.ctx.stroke();
 		//		}
 			}

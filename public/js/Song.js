@@ -9,24 +9,24 @@
 define("Song", function () {
 
 	function Song() {
-	  this.sample_song = [{"start": 1, "duration":0}];
+	  this.sample_song = [{"start": 1, "duration":100}];
 	  this.guitar_solo = [
 	  // baseine
-		{"start": 245,   "duration":0},
-		{"start": 886,   "duration":0},
-		{"start": 2792,  "duration":0},
-		{"start": 3419,  "duration":0},
-		{"start": 5311,  "duration":0},
-		{"start": 6269,  "duration":0},
-		{"start": 7834,  "duration":0},
-		{"start": 8469,  "duration":0},
-		{"start": 1039,  "duration":0},
-		{"start": 10958, "duration":0},
-		{"start": 12826, "duration":0},
-		{"start": 13431, "duration":0},
-		{"start": 15293, "duration":0},
-		{"start": 15921, "duration":0},
-		{"start": 16214, "duration":0},
+		{"start": 245,   "duration":100},
+		{"start": 886,   "duration":100},
+		{"start": 2792,  "duration":100},
+		{"start": 3419,  "duration":100},
+		{"start": 5311,  "duration":100},
+		{"start": 6269,  "duration":100},
+		{"start": 7834,  "duration":100},
+		{"start": 8469,  "duration":100},
+		{"start": 1039,  "duration":100},
+		{"start": 10958, "duration":100},
+		{"start": 12826, "duration":100},
+		{"start": 13431, "duration":100},
+		{"start": 15293, "duration":100},
+		{"start": 15921, "duration":100},
+		{"start": 16214, "duration":100},
 		{"start": 17779, "duration":0},
 		{"start": 18257, "duration":0},
 		{"start": 18396, "duration":0},
@@ -37,8 +37,14 @@ define("Song", function () {
 		{"start": 28216, "duration":0}
 	  ]
 	  this.songs = [this.sample_song, this.guitar_solo];
+	  
+	  this.currentTime = 0;
 	};
 
+	Song.prototype.getTracks = function() {
+		return this.songs;
+	}
+	
 	Song.prototype.gettrack = function(track_id = 0) {
 	 return this.song[track_id];
 	};
@@ -47,6 +53,11 @@ define("Song", function () {
 	 console.log("Song:update");
 	};
 
+	Song.prototype.getCurrentTime = function() {
+		this.currentTime++;
+		return this.currentTime;
+	}
+	
 	return Song;
 
 });
