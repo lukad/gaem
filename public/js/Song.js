@@ -48,9 +48,9 @@ define("Song", function () {
     return this.songs[track_id];
   };
 
-  Song.prototype.update = function() {
-    console.log("Song:update");
-  };
+  Song.prototype.getTrackEnd = function(track_id) {
+    this.songs[this.songs[track_id].length-1]; 
+  }
 
   Song.prototype.getCurrentTime = function() {
     if (document.getElementsByTagName("audio").length != 0) {
