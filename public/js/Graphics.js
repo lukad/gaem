@@ -24,7 +24,6 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 	};
 
 	Graphics.prototype.drawScore = function(score) {
-		console.log(score);
 		this.ctx.textAlign = 'left';
 		this.ctx.textBaseline = 'top';
 		this.ctx.fillText("score: " + score, 10, 10);
@@ -86,7 +85,6 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 		for (i = this.buttons.length - 1; i >= 0; i--) {
 			if (x >= this.buttons[i].x && x <= this.buttons[i].x + this.buttons[i].width &&
 					y >= this.buttons[i].y && y <= this.buttons[i].y + this.buttons[i].height) {
-						console.log("Pressed button:", this.buttons[i]);
 			}
 		}
 	};
