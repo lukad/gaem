@@ -1,4 +1,4 @@
-define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player, Song, Gap) {
+define("Gaem", ['Graphics', 'Player', 'Song', 'Gap', 'Menu'], function (Graphics, Player, Song, Gap, Menu) {
 
   function Gaem() {
   
@@ -25,6 +25,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player
     this.score = 0;
 
     this.graphics = new Graphics(this.ctx, this.keys, this.width, this.height);
+    this.menu = new Menu(this.ctx, canvas.width, canvas.height);
 
     document.addEventListener('keydown', this.keydown.bind(this));
     document.addEventListener('keyup', this.keyup.bind(this));
@@ -60,7 +61,7 @@ define("Gaem", ['Graphics', 'Player', 'Song', 'Gap'], function (Graphics, Player
 
     //this.player.draw(this.ctx);
     if(this.showMenu) {
-      this.graphics.drawGameMenu();
+      this.menu.draw();
     } else {
       this.graphics.draw();
     }

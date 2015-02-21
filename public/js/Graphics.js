@@ -10,19 +10,7 @@ define("Graphics", ['Button', 'Song'], function(Button, Song) {
 		this.song = new Song();
 		this.width = width;
 		this.height = height;
-		this.buttons = [
-			new Button("start", width / 3, height / 3, 200, 75),
-			new Button("credits", width / 3, 0.6 * height, 200, 75)
-		];
-		document.addEventListener("mousedown", this.onMouseDown.bind(this));
 	}
-
-	Graphics.prototype.drawGameMenu = function() {
-		for(i = this.buttons.length - 1; i >= 0; i--) {
-			this.buttons[i].draw(this.ctx);
-		}
-	};
-
 
 	Graphics.prototype.draw = function() {
 		var currentTime = this.song.getCurrentTime();
